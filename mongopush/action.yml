@@ -1,0 +1,41 @@
+name: "Push json array to mongo."
+description: ".."
+author: "lukas.heppe@tu-dortmund.de"
+
+inputs:
+  MODEL_CFG_OUT:
+    description: "Who to greet"
+    required: true
+    default: "models.json"
+
+  MONGO_DATABASE:
+    description: "Database to insert"
+    required: true
+
+  MONGO_COLLECTION:
+    description: "Collection to insert file"
+    required: true
+
+  MONGO_HOST:
+    description: "Host of database"
+    required: true
+    default: localhost:27017
+
+  MONGO_USER:
+    description: "User of mongo db"
+    required: false
+
+  MONGO_PASSWORD:
+    description: "Mongo password"
+    required: false
+
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "${{inputs.model_cfg_out}}"
+
+branding:
+  icon: "mic"
+  color: "purple"
